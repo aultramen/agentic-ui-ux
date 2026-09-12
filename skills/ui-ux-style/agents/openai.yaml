@@ -1,0 +1,6 @@
+interface:
+  display_name: "UI/UX Style"
+  short_description: "Create reviewable frontend visual directions"
+  default_prompt: "Use $ui-ux-style to create visual directions for this frontend and prepare the images for review."
+policy:
+  allow_implicit_invocation: true

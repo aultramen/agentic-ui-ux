@@ -1,0 +1,16 @@
+{
+  "host": "Claude Code",
+  "host_version": "2.1.263",
+  "scope": "isolated project install",
+  "discovered_package_skills": [
+    "ui-ux",
+    "ui-ux-build",
+    "ui-ux-plan",
+    "ui-ux-prototype",
+    "ui-ux-review",
+    "ui-ux-style"
+  ],
+  "explicit_invocation": "blocked",
+  "api_error_status": 403,
+  "reason": "Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access"
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "UI/UX Implementation"
+  short_description: "Build UI plans while preserving behavior and evidence"
+  default_prompt: "Use $ui-ux-build to implement the current scoped UI plan and verify its outcomes."
+policy:
+  allow_implicit_invocation: true

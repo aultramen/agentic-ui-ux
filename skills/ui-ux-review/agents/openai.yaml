@@ -1,0 +1,6 @@
+interface:
+  display_name: "UI/UX Verification"
+  short_description: "Find UI gaps and verify the agreed user outcomes"
+  default_prompt: "Use $ui-ux-review to verify this UI against its scope, approved references and acceptance criteria."
+policy:
+  allow_implicit_invocation: true

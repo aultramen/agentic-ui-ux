@@ -1,0 +1,6 @@
+interface:
+  display_name: "UI/UX Production Plan"
+  short_description: "Turn approved UI decisions into verifiable work"
+  default_prompt: "Use $ui-ux-plan to turn the applicable UI decisions into an implementation plan."
+policy:
+  allow_implicit_invocation: true
