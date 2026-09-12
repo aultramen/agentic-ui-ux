@@ -1,0 +1,6 @@
+interface:
+  display_name: "UI/UX Prototype"
+  short_description: "Prototype frontend journeys with isolated fixtures"
+  default_prompt: "Use $ui-ux-prototype to turn this approved visual direction into an interactive HTML mockup for review."
+policy:
+  allow_implicit_invocation: true

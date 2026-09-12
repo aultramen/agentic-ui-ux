@@ -1,0 +1,44 @@
+[
+  {
+    "scope": "project",
+    "platform": "codex",
+    "dry_run_no_writes": true,
+    "install_and_idempotence": true,
+    "file_count": 28
+  },
+  {
+    "scope": "project",
+    "platform": "claude",
+    "dry_run_no_writes": true,
+    "install_and_idempotence": true,
+    "file_count": 23
+  },
+  {
+    "scope": "project",
+    "platform": "both",
+    "dry_run_no_writes": true,
+    "install_and_idempotence": true,
+    "file_count": 49
+  },
+  {
+    "scope": "user",
+    "platform": "codex",
+    "dry_run_no_writes": true,
+    "install_and_idempotence": true,
+    "file_count": 28
+  },
+  {
+    "scope": "user",
+    "platform": "claude",
+    "dry_run_no_writes": true,
+    "install_and_idempotence": true,
+    "file_count": 22
+  },
+  {
+    "scope": "user",
+    "platform": "both",
+    "dry_run_no_writes": true,
+    "install_and_idempotence": true,
+    "file_count": 49
+  }
+]
