@@ -10,6 +10,19 @@ SKILLS = ("ui-ux", "ui-ux-style", "ui-ux-prototype", "ui-ux-plan", "ui-ux-build"
 
 
 class PackageTests(unittest.TestCase):
+    def test_every_entrypoint_links_the_shared_model_routing_contract(self):
+        policy = (ROOT / "skills" / "ui-ux" / "references" / "model-routing.md").resolve()
+        self.assertTrue(policy.is_file(), "The shared routing contract must be distributed")
+        for name in SKILLS:
+            entry = ROOT / "skills" / name / "SKILL.md"
+            targets = re.findall(r"\[[^\]]*\]\(([^)]+)\)", entry.read_text(encoding="utf-8"))
+            local_targets = {
+                (entry.parent / target.split("#", 1)[0]).resolve()
+                for target in targets if "://" not in target and not target.startswith("#")
+            }
+            with self.subTest(skill=name):
+                self.assertIn(policy, local_targets, "Direct skill invocation must reach the shared routing contract")
+
     def test_every_phase_is_discoverable_and_small(self):
         for name in SKILLS:
             with self.subTest(skill=name):

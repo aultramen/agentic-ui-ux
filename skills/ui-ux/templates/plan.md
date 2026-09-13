@@ -5,6 +5,7 @@
 - Applicable baseline / approved image and HTML revisions:
 - Relevant business and API contracts:
 - Current state and next action:
+- Applicable routing decision IDs in `model-routing.md` (execution permission only; resolve later phases at their own boundaries):
 
 ## Acceptance and implementation
 

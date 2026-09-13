@@ -18,7 +18,7 @@ Separate these decisions:
 
 Do not translate a reference into a pile of fashionable visual effects. Explain how each substantial choice supports this product. Retain established tokens and components in brownfield work unless changing them is part of the requested scope.
 
-## Build comparable candidates
+## Plan comparable candidates
 
 Default to two directions with a meaningful difference in composition, information density, hierarchy, or visual character. A hue swap is insufficient. Keep representative content and scenario consistent enough for the user to compare the choices. When the user already chose a direction, make one concrete proposal and record the reason.
 
@@ -26,7 +26,9 @@ For a single page, show its main task at the intended dimensions. For a feature 
 
 Use plausible names, labels, dates, counts, long titles, and dense rows from the product domain. These are synthetic fixtures. Do not imply they are real customer data or a verified backend contract.
 
-Use an available image-generation capability for generated raster visuals. If it is unavailable, an actual static PNG/SVG layout render can satisfy the image artifact requirement when clearly labeled with its method and limitations. Preview the output to check that the intended layout and content are present. A rendering failure remains a missing artifact.
+Immediately before producing the planned candidates, apply [model routing](../../ui-ux/references/model-routing.md). Resolve the scoped model/effort and generator decision, approval when required, and actual execution settings; reuse an unchanged decision already established by the router or style skill. Preparation above does not authorize generation before this boundary.
+
+Then use an available image-generation capability for generated raster visuals. If unavailable, an actual static PNG/SVG layout render can satisfy the image artifact requirement when clearly labeled with its method and limitations. Preview the output to check the intended layout and content. A rendering failure remains a missing artifact.
 
 ## Make approval concrete
 

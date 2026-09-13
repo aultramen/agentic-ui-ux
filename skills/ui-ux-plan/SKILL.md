@@ -15,6 +15,8 @@ Read the shared [artifact contract](../ui-ux/references/artifacts.md) and apply 
 
 ## Plan
 
+Before drafting, apply [model routing](../ui-ux/references/model-routing.md): select an available reasoning-capable model at high by default, xhigh for substantial complexity. Present the choice, resolve material-impact approval, establish actual settings and record/reuse the decision. Lower effort requires explicit user choice, even for a short plan. Routing approval does not approve the plan.
+
 1. Define stable acceptance IDs for user-visible outcomes, with design/behavior references and verification methods. Include affected pages, relevant states and supported container sizes.
 2. Inspect the actual stack and integration seams. Reuse tokens/components and preserve domain-specific guards, validation, payloads and transitions. Record API contracts from evidence, not guessed endpoints.
 3. Distinguish frontend-only mock scope from promised production integration. Mark missing contracts/endpoints as dependencies; identify independent work that can proceed.

@@ -7,6 +7,7 @@ import io
 import json
 import os
 from pathlib import Path
+import re
 import tempfile
 import subprocess
 import shutil
@@ -39,6 +40,9 @@ class InstallerTests(unittest.TestCase):
             (folder / "SKILL.md").write_text(f"---\nname: {name}\ndescription: Test\n---\nRead references/workflow.md.\n", encoding="utf-8")
             (folder / "references" / "workflow.md").write_text("Follow the approved workflow.\n", encoding="utf-8")
             (folder / "agents" / "openai.yaml").write_text("interface: {}\n", encoding="utf-8")
+        templates = self.package / "skills" / "ui-ux" / "templates"
+        templates.mkdir()
+        (templates / "model-routing.md").write_text("# Task model routing decisions\n", encoding="utf-8")
         self.environment = patch.dict(os.environ, {"USERPROFILE": str(self.home), "HOME": str(self.home)})
         self.environment.start()
         self.addCleanup(self.environment.stop)
@@ -71,6 +75,49 @@ class InstallerTests(unittest.TestCase):
             self.assertEqual((target / "SKILL.md").read_bytes(), (self.package / "skills" / name / "SKILL.md").read_bytes())
             self.assertTrue((target / "references" / "workflow.md").is_file())
             self.assertTrue((target / "agents" / "openai.yaml").is_file())
+        template = Path("ui-ux") / "templates" / "model-routing.md"
+        self.assertEqual((self.project / ".agents" / "skills" / template).read_bytes(),
+                         (self.package / "skills" / template).read_bytes())
+
+    def test_actual_bundle_distributes_relocatable_routing_files_to_both_hosts(self):
+        self.package = SCRIPT.parents[1]
+        args = ("--scope", "project", "--platform", "both", "--project-dir", str(self.project))
+        before = self.snapshot(self.project)
+        result, output = self.run_install(*args, "--dry-run")
+        self.assertEqual(result, 0, output)
+        self.assertIn("Dry run", output)
+        self.assertEqual(self.snapshot(self.project), before)
+
+        result, output = self.run_install(*args)
+        self.assertEqual(result, 0, output)
+        routing_files = ("ui-ux/references/model-routing.md", "ui-ux/templates/model-routing.md")
+        for host in (".agents", ".claude"):
+            installed = self.project / host / "skills"
+            for relative in routing_files:
+                target = installed / relative
+                with self.subTest(host=host, file=relative):
+                    self.assertTrue(target.is_file(), "The routing policy and record template must ship to both hosts")
+                    self.assertEqual(target.read_bytes(), (self.package / "skills" / relative).read_bytes())
+            for document in installed.rglob("*.md"):
+                for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", document.read_text(encoding="utf-8")):
+                    if "://" in target or target.startswith("#"):
+                        continue
+                    relative = target.split("#", 1)[0]
+                    if not relative:
+                        continue
+                    resolved = (document.parent / relative).resolve()
+                    with self.subTest(host=host, document=document, target=target):
+                        self.assertTrue(resolved.is_relative_to(installed.resolve()), "Installed links must stay inside the skill bundle")
+                        self.assertTrue(resolved.is_file(), "Every installed local link must resolve")
+            for name in SKILLS:
+                self.assertEqual((installed / name / "agents" / "openai.yaml").exists(), host == ".agents")
+
+        before = self.snapshot(self.project)
+        times = {str(path): path.stat().st_mtime_ns for path in self.project.rglob("*") if path.is_file()}
+        result, output = self.run_install(*args)
+        self.assertEqual(result, 0, output)
+        self.assertEqual(self.snapshot(self.project), before)
+        self.assertEqual({str(path): path.stat().st_mtime_ns for path in self.project.rglob("*") if path.is_file()}, times)
 
     def test_platform_and_scope_routes_skills_and_preserves_rule_content(self):
         existing = b"# Existing instructions\r\nKeep my configuration.\r\n"

@@ -19,6 +19,7 @@ Use only relevant fields; combine with the plan for a small task.
 - Unresolved high-impact decisions:
 - Explicit low-impact assumptions:
 - Current phase, next action and blockers:
+- Model routing record / decision ID, when used (reference `model-routing.md`; do not duplicate its approval state):
 
 ## Decisions
 
