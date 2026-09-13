@@ -9,6 +9,8 @@ Read the brief, plan, approval revisions and latest evidence. Check their scope 
 
 ## Execute
 
+Before the first production edit in the selected scope/output batch, apply [model routing](../ui-ux/references/model-routing.md). Present the selection, resolve any material-impact approval, establish actual settings and record the decision. Reuse unchanged router/task approval; pending, rejected or unestablished settings block this phase, not independent authorized preparation.
+
 1. Follow the plan's dependency order, completing one demonstrable user task at a time. Use existing stack, components, tokens and test seams; no mandatory frontend library or state-machine dependency.
 2. Apply the [quality contract](../ui-ux/references/quality-contract.md). Preserve business invariants and legitimate differences across similar flows. Prefer explicit domain operations over a universal component that hides permission or payload differences.
 3. Add meaningful regression tests for changed behavior before implementing that behavior when the project's workflow supports it. Use proportional verification for reversible cosmetic changes; do not manufacture tests that mirror CSS or implementation details.

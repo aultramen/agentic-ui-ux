@@ -12,6 +12,7 @@ docs/ui-ux/
     styling/v001/               images and written visual decisions
     prototype/v001/             HTML, local assets/fixtures, run instructions
     approvals.md
+    model-routing.md             phase configuration, execution permission and actual settings
     plan.md
     verification/               reports and actual evidence
 ```
@@ -23,6 +24,8 @@ Use a short, unique task ID (date plus descriptive slug works). Resume the match
 The user's current scope and explicit decisions govern the work. Written business/API contracts govern behavior; exact tokens and interaction contracts live in text or existing source. Images show visual intent. HTML demonstrates information architecture and interaction intent. Neither proves production accessibility, performance or integration.
 
 Record artifact path/revision, approved scope, decision, who approved and when or the conversation reference in `approvals.md`. Quote only actual decisions. The agent cannot approve on the user's behalf. Existing approval or authorization persists while applicable; do not repeatedly request it.
+
+Keep execution configuration decisions in `model-routing.md` using [model routing](model-routing.md) and its [template](../templates/model-routing.md). It records recommended/actual model and effort, scope/output identity, rationale/estimates, approval provenance, reuse and execution blockers. Brief, plan and evidence link the decision ID instead of duplicating its state. Routing approval authorizes only the named phase; `not-required` is not user approval, and neither status grants visual/interaction approval or final acceptance. A routine source edit can require fresh verification without requiring unchanged model approval again.
 
 Keep approved revisions unchanged. Create v002 for changes; compare against v001. A material change invalidates only affected approval decisions, dependent plan items and evidence. Preserve unaffected approvals. If image, HTML and written contract conflict in a way that affects the user, resolve that specific conflict before dependent implementation; do not silently pick a new authority.
 

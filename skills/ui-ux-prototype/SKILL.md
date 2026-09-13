@@ -15,6 +15,8 @@ Before creating screens, resolve high-impact interaction or domain questions thr
 
 ## Build and exercise the prototype
 
+Immediately before generating interactive HTML, apply [model routing](../ui-ux/references/model-routing.md): present the supported selection, resolve material-impact approval, establish actual settings and record/reuse the decision. Visual approval does not supply routing approval; unresolved selection or switching blocks generation even for disposable code.
+
 Follow [interactive prototype guidance](references/interactive-prototype.md). Save a versioned, runnable HTML entrypoint and its local assets under the task's `prototype/` folder, using [artifact conventions](../ui-ux/references/artifacts.md). Keep production source untouched. Do not import production application modules, contact real APIs, or reuse credentials. Dummy actions change only prototype-local state and must be resettable.
 
 Cover the agreed scope: one page, related pages, or an entire feature journey. Make navigation, primary actions, validation, and applicable loading, error, retry, empty, success, disabled, and confirmation states exercisable with deterministic fixtures. Include realistic long/dense content and target narrow containers.

@@ -2,6 +2,7 @@
 
 - Implementation revision / dirty state or dated source snapshot:
 - Approved design/prototype revisions:
+- Routing decision IDs in `model-routing.md` for this execution (separate from result acceptance):
 - Environment and observation time:
 - Overall status: in-progress / blocked / ready-for-user-review / accepted/ready-to-commit
 

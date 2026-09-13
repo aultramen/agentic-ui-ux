@@ -4,6 +4,8 @@ Use tools actually available in the current environment. The core does not requi
 
 | Need | Preferred evidence | Feasible fallback |
 | --- | --- | --- |
+| Model/effort selection | Available host model catalogue and supported efforts; actual executor settings | Attributed user confirmation of available/active settings; unknown until established |
+| Apply selected configuration | Exposed authorized host switch or phase delegation, with executor/settings evidence | Pause dependent work for manual switch and confirmation; continue independent preparation |
 | Inspect code/contracts | Repository reading and source-aware search | Available file search and direct reading |
 | Inspect visual reference | Open image or browse supplied URL | User-accessible local reference; otherwise record missing reference |
 | Produce style image | Available image-generation tool, following its instructions | Authored static SVG or rendered PNG; identify its origin |
@@ -14,6 +16,8 @@ Use tools actually available in the current environment. The core does not requi
 | Independent review | Separate reviewer or agent with raw requirements and artifacts | A distinct review pass against the same contract; disclose lack of independence |
 
 Check only capabilities needed for the next phase. Do not install tools or request credentials speculatively. Prose is not an image. Reading HTML is not executing it. A screenshot is not proof of keyboard or API behavior. Synthetic test fixtures are not production API evidence.
+
+Follow [model routing](model-routing.md) at the phase boundary, including for visual fallbacks and independent reviewers. A skill cannot guarantee a runtime switch by naming a model, adding unsupported metadata, editing global config or launching a separate CLI. Distinguish requested from effective settings and user-attested from host-observed values. Image tools may manage their own model and expose no effort control; do not invent one. A changed fallback with material cost/time/capability impact needs its own routing decision, not a silent substitution.
 
 If a required capability is absent, finish independent work, name the exact missing check and artifact, and request the smallest concrete input or access needed. Fallbacks change the tool or evidence source, not the phase order: on the full route, obtain the static image's applicable visual approval before building interactive HTML. An unavailable browser cannot silently waive interactive verification. If the user supplies actual observations, record their provenance; do not claim the agent ran those checks.
 

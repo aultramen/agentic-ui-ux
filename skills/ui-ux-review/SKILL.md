@@ -5,7 +5,9 @@ description: "Use when verifying or auditing web/webview UI changes against appr
 
 # Review the implementation and its evidence
 
-Read the user's scope, brief, plan, approved artifacts and current implementation before judging. An audit-only request produces findings; it does not authorize unrelated fixes. Do not treat a prototype approval, passing build or author's checklist as proof of production behavior.
+Read scope, brief, plan and approval metadata first. Before assessing implementation or running review checks, apply [model routing](../ui-ux/references/model-routing.md): present the selection, resolve material-impact approval, establish actual settings and record/reuse the decision. This also gates direct, read-only review; routing approval does not approve its findings or the implementation.
+
+An audit-only request produces findings, not unrelated fixes. A prototype approval, passing build or author's checklist does not prove production behavior.
 
 ## Check the real surface
 

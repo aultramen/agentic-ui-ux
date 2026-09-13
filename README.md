@@ -1,6 +1,6 @@
 # UI/UX Workflow
 
-Framework mandiri untuk menghasilkan frontend web/webview yang sesuai konteks, konsisten, dan dapat diverifikasi melalui Codex atau Claude Code. Versi paket: **0.1.0**.
+Framework mandiri untuk menghasilkan frontend web/webview yang sesuai konteks, konsisten, dan dapat diverifikasi melalui Codex atau Claude Code. Versi paket: **0.2.0**.
 
 Paket menggabungkan rules pemicu singkat, enam skills yang dimuat sesuai fase, dan artefak desain per proyek. Tidak bergantung pada Super Compound, framework frontend, layanan image tertentu, plugin, atau server tambahan.
 
@@ -66,6 +66,26 @@ Jika pemicu otomatis tidak memilih framework, gunakan **`$ui-ux` di Codex** atau
 | `ui-ux-build` | Implementasi per tugas pengguna dan bukti hasil |
 | `ui-ux-review` | Pemeriksaan produksi, gap, dan handoff review |
 
+### Routing model dan effort
+
+`ui-ux` memilih profil model dan effort sesuai scope, risiko, serta kemampuan host sebelum meneruskan fase. Invocation langsung pada skill fase menjalankan pemeriksaan yang sama. Pilihan diselesaikan menjadi model konkret yang tersedia; paket tidak mengunci model terbaru atau harga provider.
+
+| Skill | Waktu pemilihan |
+| --- | --- |
+| `ui-ux-build` | Sebelum perubahan production code |
+| `ui-ux-review` | Sebelum proses review, termasuk reviewer yang didelegasikan |
+| `ui-ux-style` | Tepat sebelum menghasilkan image atau visual artifact |
+| `ui-ux-prototype` | Tepat sebelum menghasilkan mockup HTML interaktif |
+| `ui-ux-plan` | Sebelum menyusun plan; default model reasoning yang sesuai dengan effort `high`, atau `xhigh` untuk pekerjaan yang lebih kompleks bila didukung |
+
+Sebelum fase berjalan, tampilkan tujuh hal: **skill dan fase, scope, model rekomendasi, effort rekomendasi, alasan, alternatif lebih hemat bila tersedia, serta estimasi biaya/waktu bila dapat diketahui**. Jika estimasi tidak tersedia, nyatakan hal itu; angka tidak boleh direka. Untuk visual, bedakan model reasoning dari generator image dan setting yang benar-benar dapat dikendalikan tool.
+
+Minta approval bila pilihan berpotensi memberi peningkatan biaya, waktu, atau kualitas output yang signifikan dalam konteks task. Tidak ada ambang angka universal. Reuse approval yang masih berlaku bila skill/fase, scope, model, effort dan artefak yang dituju tidak berubah. Penolakan menghentikan fase tersebut dan diikuti penawaran alternatif lebih rendah; alternatif tidak dijalankan diam-diam.
+
+Catat rekomendasi, scope, approval dan pengaturan efektif dalam `docs/ui-ux/work/<task-id>/model-routing.md`. Rekomendasi bukan bukti bahwa runtime sudah berganti. Jika host tidak menyediakan pergantian otomatis, tunda fase yang bergantung pada pilihan tersebut sampai pengguna mengganti dan mengonfirmasi pengaturan; pekerjaan independen dapat dilanjutkan. Catat konfirmasi pengguna sebagai attestation bila pengaturan aktif tidak dapat diamati dari host. Framework tidak mengubah konfigurasi global untuk memaksakan pilihan.
+
+Approval model hanya mengizinkan eksekusi fase terkait. Approval visual, interaksi, implementasi dan hasil akhir tetap dicatat terpisah. Detail ada di [kebijakan routing](skills/ui-ux/references/model-routing.md) dan [template keputusan](skills/ui-ux/templates/model-routing.md).
+
 ## Alur adaptif
 
 ```text
@@ -98,12 +118,13 @@ docs/ui-ux/
     references/
     styling/v001/
     prototype/v001/
+    model-routing.md
     approvals.md
     plan.md
     verification/
 ```
 
-Folder dibuat saat diperlukan. Task kecil dapat menggabungkan brief dan plan. Revisi approved dipertahankan; revisi baru tidak otomatis approved. Templates ada di masing-masing skill dan contoh pengisian ada di [contoh perbaikan lokal](examples/local-fix.md) serta [contoh fitur terintegrasi](examples/integrated-feature.md).
+Folder dibuat saat diperlukan. Task kecil dapat menggabungkan brief dan plan. `model-routing.md` menyimpan keputusan eksekusi fase; `approvals.md` menyimpan keputusan desain dan hasil. Revisi approved dipertahankan; revisi baru tidak otomatis approved. Templates ada di masing-masing skill dan contoh pengisian ada di [contoh perbaikan lokal](examples/local-fix.md) serta [contoh fitur terintegrasi](examples/integrated-feature.md).
 
 ## Kualitas dan definisi selesai
 
@@ -119,6 +140,6 @@ Framework memakai tool yang tersedia. Jika image generation tidak tersedia, imag
 python -m unittest discover -s tests -v
 ```
 
-Suite menguji installer menggunakan direktori sementara dan kontrak distribusi skill. Lihat [panduan pengujian](docs/testing.md), [hasil verifikasi](docs/verification/results.md), dan [pemetaan implementasi](docs/implementation-plan.md). Pengujian keputusan agent adalah sampel perilaku, bukan bukti universal auto-trigger atau kualitas visual semua proyek.
+Suite menguji installer menggunakan direktori sementara dan kontrak distribusi skill. Lihat [panduan pengujian](docs/testing.md), [hasil verifikasi 0.2.0](docs/verification/0.2.0/results.md), serta [pemetaan implementasi awal](docs/implementation-plan.md). [Hasil 0.1.0](docs/verification/results.md) adalah evidence historis dan tidak membuktikan routing versi baru. Pengujian keputusan agent adalah sampel perilaku, bukan bukti universal auto-trigger atau kualitas visual semua proyek.
 
 Struktur diadaptasi dari pola engineering modular [AI Hero](https://www.aihero.dev/skills) dan [Matt Pocock Skills](https://github.com/mattpocock/skills), dengan instruksi frontend yang ditulis untuk paket ini. Format mengikuti [Agent Skills](https://agentskills.io/specification); konfigurasi host mengikuti [Codex skills](https://learn.chatgpt.com/docs/build-skills) dan [Claude Code skills](https://code.claude.com/docs/en/skills). Kontrak accessibility menggunakan [WCAG 2.2](https://www.w3.org/WAI/WCAG22/quickref/) dan [ARIA APG](https://www.w3.org/WAI/ARIA/apg/).

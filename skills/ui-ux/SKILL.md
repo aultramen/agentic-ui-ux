@@ -12,7 +12,7 @@ Turn the user's product intent into a reviewable interface and verified behavior
 1. Read [discovery](references/discovery.md). Inspect the target repository, affected implementation, existing design system, API contracts, references, and current task artifacts before asking about anything discoverable. Record framework version from the installed managed rules in the brief.
 2. Resolve high-impact unknowns about users, primary task, outcome, scope, and constraints. Ask concise questions with useful defaults; deadlines do not answer product questions. Continue independent inspection while awaiting required answers. Mark low-impact assumptions explicitly.
 3. Select the route by impact, independently of greenfield/brownfield and backend readiness. A small local fix uses an applicable approved or audited baseline, a short plan and targeted checks. New UI, material styling/navigation changes, and changed workflows use the full route. An audit-only or prototype-only request ends at its requested deliverable.
-4. Follow [artifacts](references/artifacts.md) for repository-local paths, revision-bound approvals, and resumable status. Load [capabilities](references/capabilities.md) only when choosing an artifact or verification tool.
+4. Follow [artifacts](references/artifacts.md) for task-local paths and resumable status. After scope discovery, apply [model routing](references/model-routing.md) before dispatching the next skill: select supported model/effort, show the seven-field proposal, and resolve material-impact approval. The receiving skill validates the same decision at its execution boundary without duplicate approval. Load [capabilities](references/capabilities.md) when choosing tools.
 
 ## Full route
 
@@ -22,6 +22,6 @@ Image and HTML approvals mean different things. Do not substitute a generic temp
 
 ## Resume and finish
 
-Read the brief, plan status, approval revisions, and latest evidence; continue from the first unmet dependency rather than restarting. A downstream skill must check its inputs even when invoked directly. Use [quality contract](references/quality-contract.md) to turn anti-slop preferences into observable criteria, not aesthetic bans.
+Read the brief, plan status, routing decisions, approval revisions, and latest evidence; continue from the first unmet dependency rather than restarting. Directly invoked skills check their own prerequisites. Routing approval permits phase execution only; it does not approve designs or results. Use [quality contract](references/quality-contract.md) for observable criteria, not aesthetic bans.
 
 Complete independent authorized work while dependencies are blocked. Explain the specific blocker and leave affected criteria unverified. All applicable criteria need current evidence before claiming implementation verified; user acceptance is recorded separately. Do not claim automatic skill selection or written instructions guarantee visual quality.

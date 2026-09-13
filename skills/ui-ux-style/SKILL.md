@@ -15,9 +15,11 @@ For new UI, material redesign, or materially changed workflows, the sequence is 
 
 ## Produce the visual proposal
 
-Follow [visual exploration](references/visual-exploration.md), reading the [quality contract](../ui-ux/references/quality-contract.md) for relevant evaluation criteria. Inspect supplied images and URLs before deriving decisions from them. Record which aspects are adopted, adapted, or unsuitable for this product.
+Prepare with [visual exploration](references/visual-exploration.md) and relevant [quality criteria](../ui-ux/references/quality-contract.md). Inspect supplied images and URLs before deriving decisions. Record adopted, adapted and unsuitable aspects; defer generation until the routing boundary below.
 
-Create two materially different image directions by default; use one when the user's instruction or an applicable reference already selects a direction. Represent the actual page or workflow scope with realistic domain fixtures, including dense or long content. Specify typography, spacing, color, hierarchy, and density in writing.
+Plan two materially different image directions by default; use one when the user's instruction or applicable reference selects a direction. Define page/workflow coverage and realistic fixtures, including dense or long content. Specify typography, spacing, color, hierarchy and density in writing.
+
+Immediately before generating images or visual artifacts, apply [model routing](../ui-ux/references/model-routing.md): present model/effort, scope and generator settings/cost, resolve material-impact approval, and establish actual settings. Reuse matching decisions; keep reasoning effort separate from generator controls. This also applies to static fallbacks.
 
 Output an actual image. Use available image tooling; if unavailable, follow [capability fallbacks](../ui-ux/references/capabilities.md) and produce a disclosed static PNG/SVG render. Prose, source code, or an unrendered prompt does not complete the image stage. Record limitations rather than silently waiving the gate.
 
